@@ -14,9 +14,6 @@ export default class ProductWrapper extends React.Component {
                     <div className="product-info-center">
                         <ProductImage imageUrl={'https://clipartart.com/images/blank-shirt-clipart-8.jpg'}/>
                     </div>
-                    <div className="product-info-right">
-
-                    </div>
                 </div>
 
                 <div className="product-sizes-and-button">

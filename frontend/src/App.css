@@ -70,3 +70,18 @@ body {
   font-size: 1rem;
   margin-bottom: 1.5em;
 }
+
+/* Product section */
+
+.flex-wrap {
+  display: flex;
+  width: 100%;
+}
+
+.product-info-left {
+  width: 20%;
+}
+
+.product-info-center {
+  width: 30%;
+}
