@@ -1,5 +1,5 @@
 import React from 'react'
-import Button from '../buttonComponent'
+import Button from '../button'
 
 export default class HeroWrapper extends React.Component {
     render() {
@@ -8,7 +8,7 @@ export default class HeroWrapper extends React.Component {
                 <h1 className="hero-title">Join the movement!</h1>
                 <div className="btns">
                     <Button link={"#story"} content={"Our Story"} />
-                    <Button content={"Buy"} />
+                    <Button link={"/product"} content={"Buy"} />
                 </div>
             </div>
         )
