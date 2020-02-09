@@ -5,10 +5,12 @@ export default class HeroWrapper extends React.Component {
     render() {
         return(
             <div className="wrapper hero-container">
-                <h1 className="hero-title">Join the movement!</h1>
-                <div className="btns">
-                    <Button link={"#story"} content={"Our Story"} />
-                    <Button link={"/product"} content={"Buy"} />
+                <h1 className="hero-title">Join the <br></br>movement.</h1>
+                <div className="hero-left">
+                    <Button class={"btn story-btn"} link={"#story"} content={"Our Story"} />
+                </div>
+                <div className="hero-right">
+                    <Button class={"btn buy-btn"} link={"/product"} content={"Buy"} />
                 </div>
             </div>
         )
