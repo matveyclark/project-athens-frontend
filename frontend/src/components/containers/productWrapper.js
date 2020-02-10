@@ -1,9 +1,12 @@
 import React from 'react'
 import ProductInfo from '../productInfo'
 import ProductImage from '../productImage'
+import Order from '../../pages/Order'
 
 export default class ProductWrapper extends React.Component {
     render() {
+
+        const {orderProduct, currentProduct, currentValidSizes, currentUserOrders} = this.props
         return(
             <React.Fragment>
                 <div className="wrapper flex-wrap">
@@ -13,6 +16,9 @@ export default class ProductWrapper extends React.Component {
                     </div>
                     <div className="product-info-center">
                         <ProductImage imageUrl={'https://clipartart.com/images/blank-shirt-clipart-8.jpg'}/>
+                    </div>
+                    <div>
+                        <Order orderProduct={orderProduct} currentProduct={currentProduct} currentValidSizes={currentValidSizes} currentUserOrders={currentUserOrders}/>
                     </div>
                 </div>
 

@@ -3,16 +3,103 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import MainContainer from './components/containers/mainContainer';
 import ProductWrapper from './components/containers/productWrapper';
+import SignIn from './pages/SignIn';
+import SignOut from './pages/SignOut'
+import SignUp from './pages/SignUp';
+import Order from './pages/Order'
+import API from './API'
 
-function App() {
-  return (
-    <Router>
-      <React.Fragment>
-        <Route exact path="/" component={MainContainer}/>    
-        <Route exact path="/product" component={ProductWrapper}/>
-      </React.Fragment>
-    </Router>
-  );
+
+const DEFAULT_STATE = {
+  username: null,
+  userid: null,
+  currentProduct: {},
+  currentValidSizes: [],
+  currentUserOrders: null
+}
+
+class App extends React.Component{
+
+
+  state = {
+    ...DEFAULT_STATE
+  } 
+
+  signIn = data => {
+    this.setState({ username: data.username, userid: data.userid })
+    this.initialLoadProductSizes()
+    localStorage.token = data.token
+  }
+
+  signOut = () => {
+    this.setState({ 
+      ...DEFAULT_STATE
+     })
+    localStorage.removeItem('token')
+  }
+
+  signUp = (newUserObject) => {
+    API.signUp(newUserObject).then(data=>{
+      this.setState({ username: data.username, userid: data.userid});
+      this.initialLoadProductSizes()
+      localStorage.token = data.token
+    })
+  }
+
+  initialLoadProductSizes = () =>{
+    API.getValidProduct().then(currentProduct=>this.setState({ currentProduct }))
+    API.getValidSizes().then(currentValidSizes=>this.setState({currentValidSizes}))
+  }
+  componentDidMount(){
+    this.initialLoadProductSizes()
+  }
+
+  orderProduct = (selectedSizeId) => {
+    let newOrderObject = {
+      neworder: { size_id: selectedSizeId }
+      }
+    API.postOrder(newOrderObject).then(data=>{
+      console.log("Ordered object details: ", data)
+      this.getCurrentUserOrders()
+    }
+      )
+  }
+
+  getCurrentUserOrders = () => API.getCurrentUserOrders()
+  .then(currentUserOrders=>{
+    console.log("received order history: ",currentUserOrders)
+    this.setState({currentUserOrders})
+  })
+
+  render(){
+
+    const {currentProduct, currentValidSizes, currentUserOrders} = this.state
+
+    return (
+      <Router>
+        <React.Fragment>
+          <Route exact path="/" component={MainContainer}/>    
+          <Route exact path="/product" component={ props=>(
+            <ProductWrapper {...props} orderProduct={this.orderProduct} currentProduct={currentProduct} 
+            currentValidSizes={currentValidSizes} currentUserOrders={currentUserOrders}/>
+          )}
+          />
+
+          <Route exact path="/signup" component={props=> (
+            <SignUp {...props} signUp={this.signUp} />
+          )}
+          />
+
+          <Route exact path="/signin" component={props=>(
+            <SignIn {...props} signIn={this.signIn} />
+          )}
+          />
+
+        </React.Fragment>
+      </Router>
+    );
+  }
+
 }
 
 export default App;
