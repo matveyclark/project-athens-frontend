@@ -16,7 +16,7 @@ class OrderForm extends React.Component {
         const { productname } = this.props.currentProduct
         return(
             <React.Fragment>
-                <img src='https://clipartart.com/images/blank-shirt-clipart-8.jpg'/>
+                {/* <img src='https://clipartart.com/images/blank-shirt-clipart-8.jpg'/> */}
                 <h3>Current Product: {productname}</h3>
 
                 {this.props.currentValidSizes.map(size=>

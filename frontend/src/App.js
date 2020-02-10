@@ -4,9 +4,7 @@ import './App.css';
 import MainContainer from './components/containers/mainContainer';
 import ProductWrapper from './components/containers/productWrapper';
 import SignIn from './pages/SignIn';
-import SignOut from './pages/SignOut'
 import SignUp from './pages/SignUp';
-import Order from './pages/Order'
 import API from './API'
 
 
@@ -73,15 +71,16 @@ class App extends React.Component{
 
   render(){
 
-    const {currentProduct, currentValidSizes, currentUserOrders} = this.state
+    const {currentProduct, currentValidSizes, currentUserOrders, username} = this.state
 
     return (
       <Router>
         <React.Fragment>
           <Route exact path="/" component={MainContainer}/>    
           <Route exact path="/product" component={ props=>(
-            <ProductWrapper {...props} orderProduct={this.orderProduct} currentProduct={currentProduct} 
-            currentValidSizes={currentValidSizes} currentUserOrders={currentUserOrders}/>
+            <ProductWrapper {...props} orderProduct={this.orderProduct} currentProduct={currentProduct}
+            currentValidSizes={currentValidSizes} currentUserOrders={currentUserOrders} 
+            signOut={this.signOut} username={username}/>
           )}
           />
 

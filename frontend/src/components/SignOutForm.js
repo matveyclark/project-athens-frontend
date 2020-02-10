@@ -10,8 +10,11 @@ class SignOut extends React.Component {
         return(
             <React.Fragment>
             Welcome {this.props.username} !
-            <Button onClick={this.handleSubmit} variant='contained' color='primary'>
+            {/* <Button onClick={this.handleSubmit} variant='contained' color='primary'>
                 LOGOUT
+            </Button> */}
+            <Button onClick={this.handleSubmit} href="#text-buttons" color="primary">
+                Logout 
             </Button>
             </React.Fragment>
         )
