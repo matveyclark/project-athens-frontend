@@ -31,7 +31,7 @@ export default function ButtonAppBar(props) {
             <MenuIcon />
           </IconButton> */}
           <Typography variant="h4" className={classes.title}>
-            JOIN THE REVOLUTION!
+            JOIN THE MOVEMENT!
           </Typography>
           {/* <Button color="inherit">LOGIN</Button> */}
           {!props.username && <Button> <Link to="/signin">Sign_In </Link> </Button>}

@@ -16,6 +16,9 @@ const useStyles = makeStyles(theme => ({
     fontWeight: theme.typography.fontWeightRegular,
     padding: theme.spacing(1, 2),
   },
+  content:{
+    fontSize: 12,
+  },
 }));
 
 export default function ProductInfo_V2(props) {
@@ -32,7 +35,7 @@ export default function ProductInfo_V2(props) {
           <Typography className={classes.heading}>{props.title}</Typography>
         </ExpansionPanelSummary>
         <ExpansionPanelDetails>
-          <Typography>
+          <Typography className={classes.content}>
             {props.content}
           </Typography>
         </ExpansionPanelDetails>

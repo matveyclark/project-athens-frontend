@@ -3,9 +3,13 @@ import { BrowserRouter as Router, Route } from 'react-router-dom';
 import './App.css';
 import MainContainer from './components/containers/mainContainer';
 import ProductWrapper from './components/containers/productWrapper';
-import SignIn from './pages/SignIn';
-import SignUp from './pages/SignUp';
+// import SignIn from './pages/SignIn';
+// import SignInForm from './components/SignInForm'
+// import SignUp from './pages/SignUp';
+// import SignUpForm from './components/SignUpForm'
 import API from './API'
+import SignInFormModal from './components/SignInFormModal';
+import SignUpFormModal from './components/SignUpFormModal'
 
 
 const DEFAULT_STATE = {
@@ -85,12 +89,16 @@ class App extends React.Component{
           />
 
           <Route exact path="/signup" component={props=> (
-            <SignUp {...props} signUp={this.signUp} />
+            // <SignUp {...props} signUp={this.signUp} />
+            // <SignUpForm {...props} signUp={this.signUp}/>
+            <SignUpFormModal {...props} signUp={this.signUp}/>
           )}
           />
 
           <Route exact path="/signin" component={props=>(
-            <SignIn {...props} signIn={this.signIn} />
+            // <SignIn {...props} signIn={this.signIn} />
+            // <SignInForm {...props} signIn={this.signIn}/>
+            <SignInFormModal {...props} signIn={this.signIn}/>
           )}
           />
 

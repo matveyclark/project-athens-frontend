@@ -114,9 +114,14 @@ body {
 }
 
 .product-info-left {
-  width: 20%;
+  width: 30%;
 }
 
 .product-info-center {
-  width: 30%;
+  width: 40%;
 }
+
+/* Basri addition */
+/* .product-info-right {
+  width: 30%
+} */
