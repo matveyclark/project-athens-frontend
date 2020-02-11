@@ -4,11 +4,11 @@ import CurrentUserOrders from '../components/CurrentUserOrders'
 
 const Order = (props) => (
     <React.Fragment>
-        <h1>Order Form</h1>
-        <OrderForm orderProduct={props.orderProduct} 
+        {/* <h1>Order Form</h1> */}
+        <OrderForm username={props.username} orderProduct={props.orderProduct} 
         currentProduct={props.currentProduct} 
         currentValidSizes={props.currentValidSizes}/>
-        {props.currentUserOrders && <CurrentUserOrders currentUserOrders={props.currentUserOrders}/>}
+        {/* {props.currentUserOrders && <CurrentUserOrders currentUserOrders={props.currentUserOrders}/>} */}
     </React.Fragment>
 )
 

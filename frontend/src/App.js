@@ -10,6 +10,7 @@ import ProductWrapper from './components/containers/productWrapper';
 import API from './API'
 import SignInFormModal from './components/SignInFormModal';
 import SignUpFormModal from './components/SignUpFormModal'
+import SuggestToSignInOrSignUpFirst from './components/SuggestToSignInOrSignUpFirst'
 
 
 const DEFAULT_STATE = {
@@ -17,11 +18,11 @@ const DEFAULT_STATE = {
   userid: null,
   currentProduct: {},
   currentValidSizes: [],
-  currentUserOrders: null
+  currentUserOrders: null,
+  suggestToSignInOrSignUpFirst: false
 }
 
 class App extends React.Component{
-
 
   state = {
     ...DEFAULT_STATE
@@ -57,14 +58,17 @@ class App extends React.Component{
   }
 
   orderProduct = (selectedSizeId) => {
+    if (this.state.username!==null) {
     let newOrderObject = {
       neworder: { size_id: selectedSizeId }
       }
     API.postOrder(newOrderObject).then(data=>{
       console.log("Ordered object details: ", data)
       this.getCurrentUserOrders()
-    }
-      )
+    })
+  } else {
+    this.setState({suggestToSignInOrSignUpFirst: true})
+  }
   }
 
   getCurrentUserOrders = () => API.getCurrentUserOrders()
@@ -79,6 +83,7 @@ class App extends React.Component{
 
     return (
       <Router>
+        <SuggestToSignInOrSignUpFirst close={() => this.setState({suggestToSignInOrSignUpFirst: false})} open={this.state.suggestToSignInOrSignUpFirst} />
         <React.Fragment>
           <Route exact path="/" component={MainContainer}/>    
           <Route exact path="/product" component={ props=>(
