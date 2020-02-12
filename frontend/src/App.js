@@ -9,6 +9,7 @@ import ProductWrapper from './components/containers/productWrapper';
 // import SignUpForm from './components/SignUpForm'
 import API from './API'
 import SignInFormModal from './components/SignInFormModal';
+import SignInFormModalHooks from './components/SignInFormModalHooks'
 import SignUpFormModal from './components/SignUpFormModal'
 import SuggestToSignInOrSignUpFirst from './components/SuggestToSignInOrSignUpFirst'
 
@@ -105,7 +106,8 @@ class App extends React.Component{
           <Route exact path="/signin" component={props=>(
             // <SignIn {...props} signIn={this.signIn} />
             // <SignInForm {...props} signIn={this.signIn}/>
-            <SignInFormModal {...props} signIn={this.signIn}/>
+            // <SignInFormModal {...props} signIn={this.signIn}/>
+            <SignInFormModalHooks {...props} signIn={this.signIn}/>
           )}
           />
 

@@ -158,7 +158,7 @@ body {
   background: red;
 }
 
-.modal {
+/* .modal {
   position: absolute;
   top: 25%;
   left: 25%;
@@ -166,4 +166,4 @@ body {
   height: 10em;
   background: blue;
   z-index: 10;
-}
+} */
