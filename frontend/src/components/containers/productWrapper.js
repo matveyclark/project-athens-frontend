@@ -6,6 +6,7 @@ import Order from '../../pages/Order'
 import ButtonAppBar from '../ButtonAppBar'
 import { createMuiTheme, responsiveFontSizes, ThemeProvider } from '@material-ui/core/styles';
 import Typography from '@material-ui/core/Typography';
+import OrderJustExecuted from '../OrderJustExecuted'
 
 
 let theme = createMuiTheme();
@@ -22,9 +23,15 @@ const tshirtDivStyles = {
 
 export default class ProductWrapper extends React.Component {
 
+    state = {
+        showOrderJustExecutedConfirmation: true
+    }
+
+    close = () => {this.setState({ showOrderJustExecutedConfirmation:false })} 
+
     render() {
 
-        const {orderProduct, currentProduct, currentValidSizes, currentUserOrders, signOut, username} = this.props
+        const {orderProduct, currentProduct, currentValidSizes, currentUserOrders, signOut, username, orderJustExecuted} = this.props
         return(
             <React.Fragment>
                 <div>
@@ -42,6 +49,12 @@ export default class ProductWrapper extends React.Component {
 
                         <div style={{display:'flex',justifyContent: 'center', alignItems: 'center'}}>
                             <Order username={username} orderProduct={orderProduct} currentProduct={currentProduct} currentValidSizes={currentValidSizes} currentUserOrders={currentUserOrders}/>
+                        </div>
+                        <div>
+                            { 
+                                orderJustExecuted && this.state.showOrderJustExecutedConfirmation 
+                                && <OrderJustExecuted open={this.state.showOrderJustExecutedConfirmation} close={this.close} orderJustExecuted={orderJustExecuted}/> 
+                            }
                         </div>
 
                     </div>

@@ -19,7 +19,8 @@ const DEFAULT_STATE = {
   currentProduct: {},
   currentValidSizes: [],
   currentUserOrders: null,
-  suggestToSignInOrSignUpFirst: false
+  suggestToSignInOrSignUpFirst: false,
+  orderJustExecuted: null
 }
 
 class App extends React.Component{
@@ -62,8 +63,9 @@ class App extends React.Component{
     let newOrderObject = {
       neworder: { size_id: selectedSizeId }
       }
-    API.postOrder(newOrderObject).then(data=>{
-      console.log("Ordered object details: ", data)
+    API.postOrder(newOrderObject).then(orderJustExecuted=>{
+      console.log("Ordered object details: ", orderJustExecuted)
+      this.setState({ orderJustExecuted })
       this.getCurrentUserOrders()
     })
   } else {
@@ -79,7 +81,7 @@ class App extends React.Component{
 
   render(){
 
-    const {currentProduct, currentValidSizes, currentUserOrders, username} = this.state
+    const {currentProduct, currentValidSizes, currentUserOrders, username, orderJustExecuted} = this.state
 
     return (
       <Router>
@@ -87,7 +89,7 @@ class App extends React.Component{
         <React.Fragment>
           <Route exact path="/" component={MainContainer}/>    
           <Route exact path="/product" component={ props=>(
-            <ProductWrapper {...props} orderProduct={this.orderProduct} currentProduct={currentProduct}
+            <ProductWrapper {...props} orderJustExecuted={orderJustExecuted} orderProduct={this.orderProduct} currentProduct={currentProduct}
             currentValidSizes={currentValidSizes} currentUserOrders={currentUserOrders} 
             signOut={this.signOut} username={username}/>
           )}

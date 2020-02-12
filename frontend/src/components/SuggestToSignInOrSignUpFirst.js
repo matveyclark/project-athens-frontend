@@ -16,7 +16,7 @@ class SuggestToSignInOrSignUpFirst extends React.Component {
         <Dialog open={this.props.open}>
           <DialogTitle>Please signin or signup to order!</DialogTitle>
           <DialogContent>
-            <DialogContentText> Please signin or signup to order! </DialogContentText>
+            {/* <DialogContentText> Please signin or signup to order! </DialogContentText> */}
           </DialogContent>
           <DialogActions>
             <Button onClick={this.props.close}> <Link to="/signin">Sign_In </Link> </Button>
