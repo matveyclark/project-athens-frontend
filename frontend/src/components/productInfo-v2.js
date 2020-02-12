@@ -14,7 +14,7 @@ const useStyles = makeStyles(theme => ({
   heading: {
     fontSize: theme.typography.pxToRem(20),
     fontWeight: theme.typography.fontWeightRegular,
-    padding: theme.spacing(0.5, 1),
+    padding: theme.spacing(0.5, 0.5),
   },
   content:{
     fontSize: 14,
